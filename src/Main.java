@@ -26,3 +26,4 @@ public class Main {
 // git config --global user.name "닉네임" -> git config --global user.email "이메일"
 // git config user.name, git config user.email을 통해 닉넴과 메일 확인
 // 마지막으로 깃 푸쉬. git push origin master
+//수정하고 적용할때는 git status -> git add . -> git commit -m "수정내용" -> git push origin master
