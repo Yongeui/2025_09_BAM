@@ -17,7 +17,7 @@ public class Main {
 			
 			if (command.length() ==0 ) {
 				
-				System.out.println("너 명령어 입력 안했어");
+				System.out.println("입력된 명령어가 없습니다.");
 				continue;
 			}
 			
@@ -29,7 +29,11 @@ public class Main {
 				System.out.println("게시글이 없습니다");
 				}
 				else {
-					System.out.println("게시글이 있습니다.");
+					System.out.println("번호 	/	제목	");
+					for (int i = articles.size(); i >= 0; i--) {
+						Article article = articles.get(i);
+						System.out.printf(" %d	/	%s	\n", article.id, article.title);
+					}
 				}
 				
 			} else if (command.equals("article write")) {
