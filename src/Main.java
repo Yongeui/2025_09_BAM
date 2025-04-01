@@ -37,7 +37,7 @@ public class Main {
 			} else if (command.equals("article write")) {
 
 				int id = PostNumber + 1;
-
+				String regDate = Util.getNow();
 				System.out.printf("제목: ");
 				String title = sc.nextLine();
 				System.out.printf("내용: ");
@@ -46,7 +46,7 @@ public class Main {
 				System.out.println("입력된 제목 : " + title);
 				System.out.println("입력된 제목 : " + body);
 
-				Article article = new Article(id, title, body);
+				Article article = new Article(id, regDate, title, body);
 				articles.add(article);
 
 				System.out.printf("%d 번글이 생성되었습니다.\n", id);
@@ -54,13 +54,25 @@ public class Main {
 			} else if (command.startsWith("article detail")) {
 
 				String[] commandDiv = command.split(" "); // article detail 1
-				/*
-				 * System.out.println(commandDiv[0]); System.out.println(commandDiv[1]);
-				 * System.out.println(commandDiv[2]);
-				 */
-
 				int id = Integer.parseInt(commandDiv[2]);
-				System.out.printf(" %d번 게시물은 없습니다\n", id);
+				
+				boolean found = false;
+				
+				for(int i =0; i < articles.size(); i++) {
+					Article article = articles.get(i);
+					if (article.id == id) {
+						found = true;
+						System.out.printf(" 번호 :  " + article.id );
+						System.out.printf(" 날짜 :  " + "2025-03-31 10:59:30" );
+						System.out.printf(" 제목 :  " + article.title );
+						System.out.printf(" 내용 :  " + article.body );
+						break;
+					}
+				}
+				if (found == false) {
+					System.out.printf(" %d번 게시물은 없습니다. \n", id);
+				}
+				
 			}	else {
 				System.out.println("존재하지 않는 명령어입니다");
 				continue; // 만나면 skip 맨위로 올라감
@@ -75,11 +87,18 @@ public class Main {
 
 class Article {
 	int id;
+	String regDate;
 	String title;
 	String body;
 
 	Article(int id, String title, String body) {
 		this.id = id;
+		this.title = title;
+		this.body = body;
+	}
+	Article(int id, String regDate, String title, String body) {
+		this.id = id;
+		this.regDate = regDate;
 		this.title = title;
 		this.body = body;
 	}
