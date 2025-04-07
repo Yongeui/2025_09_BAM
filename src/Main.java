@@ -51,27 +51,35 @@ public class Main {
 
 				System.out.printf("%d 번글이 생성되었습니다.\n", id);
 				PostNumber++;
+				
 			} else if (command.startsWith("article detail")) {
 
 				String[] commandDiv = command.split(" "); // article detail 1
 				int id = Integer.parseInt(commandDiv[2]);
 				
 				boolean found = false;
+				Article foundArticle = null;
 				
 				for(int i =0; i < articles.size(); i++) {
 					Article article = articles.get(i);
 					if (article.id == id) {
 						found = true;
-						System.out.printf(" 번호 :  " + article.id );
-						System.out.printf(" 날짜 :  " + "2025-03-31 10:59:30" );
-						System.out.printf(" 제목 :  " + article.title );
-						System.out.printf(" 내용 :  " + article.body );
+						foundArticle = article;
+						/*
+						 * System.out.printf(" 번호 :  " + article.id ); System.out.printf(" 날짜 :  " +
+						 * "2025-03-31 10:59:30" ); System.out.printf(" 제목 :  " + article.title );
+						 * System.out.printf(" 내용 :  " + article.body );
+						 */
 						break;
 					}
 				}
-				if (found == false) {
+				if (foundArticle == null) {
 					System.out.printf(" %d번 게시물은 없습니다. \n", id);
+					continue;
 				}
+				
+				articles.remove(id);
+				System.out.println(id + "번 글을 삭제했습니다");
 				
 			}	else {
 				System.out.println("존재하지 않는 명령어입니다");
