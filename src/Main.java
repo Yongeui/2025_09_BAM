@@ -46,7 +46,7 @@ public class Main {
 				System.out.println("입력된 제목 : " + title);
 				System.out.println("입력된 제목 : " + body);
 
-				Article article = new Article(id, regDate, title, body);
+				Article article = new Article(id, regDate, updateDate, title, body);
 				articles.add(article);
 
 				System.out.printf("%d 번글이 생성되었습니다.\n", id);
@@ -65,7 +65,8 @@ public class Main {
 					if (article.id == id) {
 						found = true;
 						System.out.printf(" 번호 :  " + article.id );
-						System.out.printf(" 날짜 :  " + article.regDate);
+						System.out.printf(" 작성날짜 :  " + article.regDate);
+						System.out.printf(" 수정날짜 :  " + article.updateDate);
 						System.out.printf(" 제목 :  " + article.title );
 						System.out.printf(" 내용 :  " + article.body );
 						break;
@@ -100,8 +101,10 @@ public class Main {
 				System.out.printf("내용 : ");
 				String newBody = sc.nextLine();
 				
+				String updateDate = Util.getNow();
 				foundArticle.title = newTitle;
 				foundArticle.body = newBody;
+				foundArticle.updateDate = updateDate;
 				
 				} else if (command.startsWith("article delete")) {
 					
@@ -152,9 +155,10 @@ class Article {
 		this.body = body;
 	}
 
-	Article(int id, String regDate, String title, String body) {
+	Article(int id, String regDate, String updateDate,  String title, String body) {
 		this.id = id;
 		this.regDate = regDate;
+		this.updateDate = updateDate;
 		this.title = title;
 		this.body = body;
 	}
