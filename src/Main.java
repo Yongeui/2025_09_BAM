@@ -46,7 +46,7 @@ public class Main {
 				System.out.println("입력된 제목 : " + title);
 				System.out.println("입력된 제목 : " + body);
 
-				//updateDate부분 수정 해야함
+				//updateDate부분 수정 해야함 commit push하고 확인할것
 				Article article = new Article(id, regDate, updateDate, title, body);
 				articles.add(article);
 
