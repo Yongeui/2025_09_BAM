@@ -5,6 +5,8 @@ import java.util.ArrayList;
 public class Main {
 	public static void main(String[] args) {
 		System.out.println("==프로그램 시작==");
+		
+		//makeTestDate(); 사용예정의 메서드
 
 		Scanner sc = new Scanner(System.in);
 		int PostNumber = 0;
@@ -28,7 +30,7 @@ public class Main {
 					System.out.println("게시글이 없습니다");
 				} else {
 					System.out.println("번호 	/	제목	/	조회	");
-					for (int i = articles.size(); i >= 0; i--) {
+					for (int i = articles.size() -1; i >= 0; i--) {
 						Article article = articles.get(i);
 						System.out.printf(" %4d	/	%5s	/	%4d	\n", article.id, article.title);
 					}
@@ -47,6 +49,8 @@ public class Main {
 				System.out.println("입력된 제목 : " + body);
 
 				//updateDate부분 수정 해야함 commit push하고 확인할것
+				String updateDate = null;
+				
 				Article article = new Article(id, regDate, updateDate, title, body);
 				articles.add(article);
 
@@ -68,19 +72,21 @@ public class Main {
 						break;
 					}
 					
-					if (foundArticle == null) {
-						System.out.printf("%d번 게시물은 없습니다", id);
-						continue;
+				}
+				
+				if (foundArticle == null) {
+					System.out.printf("%d번 게시물은 없습니다", id);
+					continue;
 					}
 					
 					foundArticle.hit++;
 					
 					System.out.println(" 번호 :  " + foundArticle.id );
 					System.out.println(" 작성날짜 :  " + foundArticle.regDate);
-					System.out.println(" 수정날짜 :  " + foundarticle.updateDate);
-					System.out.println(" 제목 :  " + foundarticle.title );
-					System.out.println(" 내용 :  " + foundarticle.body );
-					System.out.println(" 조회수 : " + foundarticle.hit);
+					System.out.println(" 수정날짜 :  " + foundArticle.updateDate);
+					System.out.println(" 제목 :  " + foundArticle.title );
+					System.out.println(" 내용 :  " + foundArticle.body );
+					System.out.println(" 조회수 : " + foundArticle.hit);
 					
 					} else if (command.startsWith("article modify")) {
 					String[] commandDiv = command.split(" ");
