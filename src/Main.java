@@ -30,7 +30,7 @@ public class Main {
 					System.out.println("번호 	/	제목	/	조회	");
 					for (int i = articles.size(); i >= 0; i--) {
 						Article article = articles.get(i);
-						System.out.printf(" %d	/	%s	/	%d	\n", article.id, article.title);
+						System.out.printf(" %4d	/	%5s	/	%4d	\n", article.id, article.title);
 					}
 				}
 
@@ -59,24 +59,28 @@ public class Main {
 				
 				int id = Integer.parseInt(commandDiv[2]);
 
-				boolean found = false;
+				Article foundArticle = null;
 
 				for (int i = 0; i < articles.size(); i++) {
 					Article article = articles.get(i);
 					if (article.id == id) {
-						found = true;
-						System.out.println(" 번호 :  " + article.id );
-						System.out.println(" 작성날짜 :  " + article.regDate);
-						System.out.println(" 수정날짜 :  " + article.updateDate);
-						System.out.println(" 제목 :  " + article.title );
-						System.out.println(" 내용 :  " + article.body );
-						System.out.println("조회수 : " + article.hit);
+						foundArticle = article;
 						break;
 					}
 					
-					if (found == false) {
+					if (foundArticle == null) {
 						System.out.printf("%d번 게시물은 없습니다", id);
+						continue;
 					}
+					
+					foundArticle.hit++;
+					
+					System.out.println(" 번호 :  " + foundArticle.id );
+					System.out.println(" 작성날짜 :  " + foundArticle.regDate);
+					System.out.println(" 수정날짜 :  " + foundarticle.updateDate);
+					System.out.println(" 제목 :  " + foundarticle.title );
+					System.out.println(" 내용 :  " + foundarticle.body );
+					System.out.println(" 조회수 : " + foundarticle.hit);
 					
 					} else if (command.startsWith("article modify")) {
 					String[] commandDiv = command.split(" ");
@@ -152,11 +156,6 @@ class Article {
 	String body;
 	int hit;
 
-	Article(int id, String title, String body) {
-		this.id = id;
-		this.title = title;
-		this.body = body;
-	}
 
 	Article(int id, String regDate, String updateDate,  String title, String body) {
 		this.id = id;
