@@ -49,6 +49,7 @@ public class Main {
 				System.out.println("입력된 제목 : " + body);
 
 				//updateDate부분 수정 해야함 commit push하고 확인할것
+				//action check~
 				String updateDate = null;
 				
 				Article article = new Article(id, regDate, updateDate, title, body);
