@@ -78,7 +78,7 @@ public class Main {
 				if (foundArticle == null) {
 					System.out.printf("%d번 게시물은 없습니다", id);
 					continue;
-					}
+					} 
 					
 					foundArticle.hit++;
 					
