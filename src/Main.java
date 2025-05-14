@@ -50,6 +50,10 @@ public class Main {
 				System.out.println("입력된 제목 : " + body);
 
 				//updateDate부분 수정 해야함 2025-04-17 commit-m
+				/*
+				 * task12. ★조회수 조회 기능 추가구현★ https://www.youtube.com/watch?v=N7tzjnIn53U&list=
+				 * PLF9oUe1QH64t_LDHUlpN3GyLMhJB9uQ15&index=15 7분 5초
+				 */
 				//action check~
 				String updateDate = null;
 				
